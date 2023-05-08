@@ -1,0 +1,62 @@
+//后台路由
+module.exports = app =>{
+  const {router,controller} = app
+  var adminauth = app.middleware.adminauth()//中台守卫
+  //中台守卫的目的就是为了在用户未登录的情况下不是访问后台页面，访问后台页面就直接跳转到登录页面
+  //后台管理页面 
+  router.get('/admin/index',controller.admin.main.index)
+  //登录
+  router.post('/admin/checkLogin',controller.admin.main.checkLogin)
+  //获取文章类别信息
+  router.get('/admin/getTypeInfo',adminauth ,controller.admin.main.getTypeInfo)
+  //添加文章
+  router.post('/admin/addArticle',controller.admin.main.addArticle)
+  //修改文章
+  router.post('/admin/updateArticle',adminauth,controller.admin.main.updateArticle)
+  //获取文章列表
+  router.get('/admin/getArticleList',adminauth,controller.admin.main.getArticleList)
+  //删除文章
+  router.get('/admin/delArticle/:id',adminauth,controller.admin.main.delArticle)
+  //根据id获得文章详情
+  router.get('/admin/getArticleById/:id',adminauth,controller.admin.main.getArticleById)
+  //获取草稿箱文章
+  router.get('/admin/getDraftList',adminauth,controller.admin.main.getDraftList)
+  //删除草稿箱文章
+  router.get('/admin/delArticleDraft/:id',adminauth,controller.admin.main.delArticleDraft)
+  //根据id获得草稿箱文章详情
+  router.get('/admin/getArticleDraftById/:id',adminauth,controller.admin.main.getArticleDraftById)
+  //添加草稿箱文章
+  router.post('/admin/addArticleDraft',adminauth,controller.admin.main.addArticleDraft)
+  //获取相册列表
+  router.get('/admin/getPhotoList',adminauth,controller.admin.main.getPhotoList)
+  //删除照片
+  router.get('/admin/delPicture/:id',adminauth,controller.admin.main.delPicture)
+  //添加照片
+  router.post('/admin/addPicture',adminauth,controller.admin.main.addPicture)
+  //获取留言板列表
+  router.get('/admin/getMessageList',adminauth,controller.admin.main.getMessageList)
+  //删除访客留言
+  router.get('/admin/delMessage/:id',adminauth,controller.admin.main.delMessage)
+  //删除博主回复留言
+  router.get('/admin/delMessageReply/:id',adminauth,controller.admin.main.delMessageReply)
+  //博主回复留言
+  router.post('/admin/getMessageReply',adminauth,controller.admin.main.getMessageReply)
+  //获取审核留言板列表
+  router.get('/admin/getCheckMessage',adminauth,controller.admin.main.getCheckMessage)
+  //审核通过留言
+  router.post('/admin/getPassMessage',adminauth,controller.admin.main.getPassMessage)
+  //删除审核留言
+  router.get('/admin/delCheckMessage/:id',adminauth,controller.admin.main.delCheckMessage)
+  //获取友情链接
+  router.get('/admin/getLinks',adminauth,controller.admin.main.getLinks)
+  //删除友情链接
+  router.get('/admin/delLink/:id',adminauth,controller.admin.main.delLink)
+  //添加友情链接
+  router.post('/admin/addLink',adminauth,controller.admin.main.addLink)
+  //修改友情链接
+  router.post('/admin/updateLink',adminauth,controller.admin.main.updateLink)
+  //获得个人信息
+  router.get('/admin/getInformation',adminauth,controller.admin.main.getInformation)
+  //修改个人信息
+  router.post('/admin/updateInformation',adminauth,controller.admin.main.updateInformation)
+}
