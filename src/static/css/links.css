@@ -1,0 +1,10 @@
+.list-div{
+  width: 100%;
+}
+.ant-modal-header{
+  background-color: rgb(31, 101, 230);
+  padding: 9px 24px;
+}
+.ant-modal-title{
+  color: #fff;
+}
